@@ -1,4 +1,4 @@
-package models;
+package dev.whydn.models;
 
 public enum  CarColor {
     WHITE,
