@@ -2,21 +2,20 @@ package dev.whydn.dao;
 
 import dev.whydn.constants.MessageConstant;
 import models.Car;
-import sun.plugin2.message.Message;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class ParkingLotDaoMap implements ParkingLotDao {
+public class ParkingLotDaoMapImpl implements ParkingLotDao {
     private Integer capacity;
     private Map<Integer, Car> parkingLots = new HashMap<>();
 
-    private ParkingLotDaoMap(Integer capacity) {
+    private ParkingLotDaoMapImpl(Integer capacity) {
         this.capacity = capacity;
     }
 
-    public static ParkingLotDaoMap createParkingLotDaoMap(Integer capacity) {
-        return new ParkingLotDaoMap(capacity);
+    public static ParkingLotDaoMapImpl createParkingLotDaoMap(Integer capacity) {
+        return new ParkingLotDaoMapImpl(capacity);
     }
 
     @Override

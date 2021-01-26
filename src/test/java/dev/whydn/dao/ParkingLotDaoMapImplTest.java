@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class ParkingLotDaoMapTest {
+public class ParkingLotDaoMapImplTest {
 
     public static final int capacity = 2;
 
@@ -16,8 +16,8 @@ public class ParkingLotDaoMapTest {
 
     @Test
     public void createParkingLotDaoMap_should_return_ParkingLotDaoClass() {
-        Class expected = ParkingLotDaoMap.class;
-        Class actual = ParkingLotDaoMap.createParkingLotDaoMap(capacity).getClass();
+        Class expected = ParkingLotDaoMapImpl.class;
+        Class actual = ParkingLotDaoMapImpl.createParkingLotDaoMap(capacity).getClass();
 
         assertEquals(expected, actual);
     }
@@ -25,7 +25,7 @@ public class ParkingLotDaoMapTest {
     @Test
     public void generateParkingLot_Should_generate_return_parkingLotMessageSuccessFormat() {
         String expected = String.format(MessageConstant.CREATE_PARKING_LOT_SUCCESS, capacity);
-        String actual = ParkingLotDaoMap.createParkingLotDaoMap(capacity).generateParkingLot();
+        String actual = ParkingLotDaoMapImpl.createParkingLotDaoMap(capacity).generateParkingLot();
 
         assertEquals(expected, actual);
     }
@@ -34,7 +34,7 @@ public class ParkingLotDaoMapTest {
     public void park_should_able_toParking_a_car_when_have_oneSlot_null() {
         Integer expectedAllocatedSlot = 1;
 
-        ParkingLotDao parkingLotDao = ParkingLotDaoMap.createParkingLotDaoMap(capacity);
+        ParkingLotDao parkingLotDao = ParkingLotDaoMapImpl.createParkingLotDaoMap(capacity);
         parkingLotDao.generateParkingLot();
 
         String expectedResult = String.format(MessageConstant.PARKING_SUCCESS, expectedAllocatedSlot);
@@ -45,7 +45,7 @@ public class ParkingLotDaoMapTest {
 
     @Test
     public void park_should_notAble_toParking_a_car_when_there_noSlot() {
-        ParkingLotDao parkingLotDao = ParkingLotDaoMap.createParkingLotDaoMap(0);
+        ParkingLotDao parkingLotDao = ParkingLotDaoMapImpl.createParkingLotDaoMap(0);
         parkingLotDao.generateParkingLot();
 
         String expectedResult = MessageConstant.PARKING_LOT_FULL;
