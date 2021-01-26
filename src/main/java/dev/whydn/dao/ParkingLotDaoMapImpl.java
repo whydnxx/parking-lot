@@ -2,7 +2,7 @@ package dev.whydn.dao;
 
 import dev.whydn.constants.MessageConstant;
 import dev.whydn.utils.ParkingFeeCalculator;
-import models.Car;
+import dev.whydn.models.Car;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,7 +1,12 @@
 package dev.whydn;
 
+import dev.whydn.process.RunCommand;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello World !!!");
+        String directory = System.getProperty("user.dir");
+        String fileName = args[0];
+        RunCommand runCommand = RunCommand.createRunCommand(directory, fileName);
+        runCommand.run();
     }
 }

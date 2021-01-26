@@ -1,7 +1,7 @@
 package dev.whydn.dao;
 
 import dev.whydn.constants.MessageConstant;
-import models.Car;
+import dev.whydn.models.Car;
 import org.junit.Test;
 
 import java.math.BigDecimal;

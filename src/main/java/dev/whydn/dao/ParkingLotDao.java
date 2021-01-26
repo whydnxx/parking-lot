@@ -1,6 +1,6 @@
 package dev.whydn.dao;
 
-import models.Car;
+import dev.whydn.models.Car;
 
 public interface ParkingLotDao {
     String generateParkingLot();
