@@ -1,0 +1,4 @@
+create_parking_lot 6
+park KA-01-HH-1234
+leave KA-01-HH-3141 4
+status
