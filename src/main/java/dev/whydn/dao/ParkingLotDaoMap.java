@@ -21,7 +21,7 @@ public class ParkingLotDaoMap implements ParkingLotDao {
 
     @Override
     public String generateParkingLot() {
-        for (int i = 1; i <= capacity; i++) {
+        for (int i = 1; i <= this.capacity; i++) {
            this.parkingLots.put(i, null);
         }
         return String.format(MessageConstant.CREATE_PARKING_LOT_SUCCESS, this.capacity);
@@ -29,7 +29,7 @@ public class ParkingLotDaoMap implements ParkingLotDao {
 
     @Override
     public String park(Car car) {
-        for (int i = 1; i <= capacity; i++) {
+        for (int i = 1; i <= this.capacity; i++) {
             if (parkingLots.get(i) == null) {
                 parkingLots.put(i, car);
                 return String.format(MessageConstant.PARKING_SUCCESS, i);
