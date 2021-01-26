@@ -17,8 +17,8 @@ public class ParkingFeeCalculatorTest {
     }
 
     @Test
-    public void calculateFee_return_fee_2000_with_givenDuration_2() {
-        int expectedFee = 2000;
+    public void calculateFee_return_fee_10_with_givenDuration_2() {
+        int expectedFee = 10;
         Integer givenDuration = 2;
 
         ParkingFeeCalculator parkingFeeCalculator = ParkingFeeCalculator.createParkingFeeCalculator();
@@ -30,8 +30,8 @@ public class ParkingFeeCalculatorTest {
     }
 
     @Test
-    public void calculateFee_return_fee_8000_with_givenDuration_4() {
-        int expectedFee = 8000;
+    public void calculateFee_return_fee_30_with_givenDuration_4() {
+        int expectedFee = 30;
         Integer givenDuration = 4;
 
         ParkingFeeCalculator parkingFeeCalculator = ParkingFeeCalculator.createParkingFeeCalculator();

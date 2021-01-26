@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 
 public class ParkingFeeCalculator {
     public static final int FIRST_HOURS = 2;
-    public static final BigDecimal FIRST_HOUR_FEE = new BigDecimal(2000);
-    public static final BigDecimal NEXT_HOUR_FEE = new BigDecimal(3000);
+    public static final BigDecimal FIRST_HOUR_FEE = new BigDecimal(10);
+    public static final BigDecimal NEXT_HOUR_FEE = new BigDecimal(10);
 
     public static ParkingFeeCalculator createParkingFeeCalculator() {
         return new ParkingFeeCalculator();
