@@ -13,6 +13,10 @@ public class Car {
     private String licensePlate;
     private CarColor carColor;
 
+    public static Car createCar(String licensePlate) {
+        return new Car(licensePlate);
+    }
+
     public Car(String licensePlate) {
         this.licensePlate = licensePlate;
     }

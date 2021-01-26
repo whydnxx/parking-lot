@@ -15,8 +15,8 @@ public class ParkingLotDaoMapImplTest {
     public static final String LICENSE_PLATE_ONE = "KA-01-HH-1234";
     public static final String LICENSE_PLATE_TWO = "KA-01-HH-1234";
 
-    public static final Car carOne = new Car(LICENSE_PLATE_ONE);
-    public static final Car carTwo = new Car(LICENSE_PLATE_TWO);
+    public static final Car carOne = Car.createCar(LICENSE_PLATE_ONE);
+    public static final Car carTwo = Car.createCar(LICENSE_PLATE_TWO);
 
     @Test
     public void createParkingLotDaoMap_should_return_ParkingLotDaoClass() {
