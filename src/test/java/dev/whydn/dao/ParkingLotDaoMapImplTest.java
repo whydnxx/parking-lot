@@ -4,6 +4,8 @@ import dev.whydn.constants.MessageConstant;
 import models.Car;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 import static org.junit.Assert.*;
 
 public class ParkingLotDaoMapImplTest {
@@ -50,6 +52,34 @@ public class ParkingLotDaoMapImplTest {
 
         String expectedResult = MessageConstant.PARKING_LOT_FULL;
         String actualResult = parkingLotDao.park(carOne);
+
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void leave_should_return_licencePlate_and_slotNumber_and_calculatedFee_when_car_isExist(){
+        Integer duration = 2;
+        Integer expectedSLotNumber = 1;
+        BigDecimal expectedFee = new BigDecimal(2000);
+
+        ParkingLotDao parkingLotDaoMap = ParkingLotDaoMapImpl.createParkingLotDaoMap(capacity);
+        parkingLotDaoMap.generateParkingLot();
+        parkingLotDaoMap.park(carOne);
+        String expectedResult = String.format(MessageConstant.LEAVE_SUCCESS, carOne.getLicensePlate(), expectedSLotNumber, expectedFee);
+        String actualResult = parkingLotDaoMap.remove(carOne, duration);
+
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void leave_should_return_notFoundMessage_when_car_isNotExist_at_parkingLot(){
+        Integer duration = 2;
+
+        ParkingLotDao parkingLotDaoMap = ParkingLotDaoMapImpl.createParkingLotDaoMap(capacity);
+        parkingLotDaoMap.generateParkingLot();
+
+        String expectedResult = String.format(MessageConstant.CAR_NOT_FOUND, carOne.getLicensePlate());
+        String actualResult = parkingLotDaoMap.remove(carOne, duration);
 
         assertEquals(expectedResult, actualResult);
     }

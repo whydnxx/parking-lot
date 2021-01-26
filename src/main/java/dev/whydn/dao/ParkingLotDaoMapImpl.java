@@ -1,6 +1,7 @@
 package dev.whydn.dao;
 
 import dev.whydn.constants.MessageConstant;
+import dev.whydn.utils.ParkingFeeCalculator;
 import models.Car;
 
 import java.util.HashMap;
@@ -35,5 +36,16 @@ public class ParkingLotDaoMapImpl implements ParkingLotDao {
             }
         }
         return MessageConstant.PARKING_LOT_FULL;
+    }
+
+    @Override
+    public String remove(Car car, Integer duration) {
+        for (int i = 1; i <= this.capacity; i++) {
+            if (parkingLots.get(i) != null && parkingLots.get(i).equals(car)) {
+                parkingLots.put(i, null);
+                return String.format(MessageConstant.LEAVE_SUCCESS, car.getLicensePlate(), i, ParkingFeeCalculator.createParkingFeeCalculator().calculateFee(duration));
+            }
+        }
+        return String.format(MessageConstant.CAR_NOT_FOUND, car.getLicensePlate());
     }
 }
