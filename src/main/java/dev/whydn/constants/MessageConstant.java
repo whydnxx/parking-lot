@@ -6,4 +6,6 @@ public class MessageConstant {
     public static final String PARKING_LOT_FULL = "Sorry, parking lot is full.";
     public static final String LEAVE_SUCCESS = "Registration number %s with Slot Number %d is free with Charge %s";
     public static final String CAR_NOT_FOUND = "Registration number %s not found";
+    public static final String PRINT_STATUS_HEADER = "Slot No. Registration No.";
+    public static final String PRINT_STATUS_BODY = "%d. %s";
 }

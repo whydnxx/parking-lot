@@ -48,4 +48,15 @@ public class ParkingLotDaoMapImpl implements ParkingLotDao {
         }
         return String.format(MessageConstant.CAR_NOT_FOUND, car.getLicensePlate());
     }
+
+    @Override
+    public String printStatus() {
+        StringBuilder status = new StringBuilder();
+        status.append(MessageConstant.PRINT_STATUS_HEADER);
+        for (int i = 1; i <= this.parkingLots.size(); i++) {
+            if (parkingLots.get(i) == null) continue;
+            status.append(String.format(MessageConstant.PRINT_STATUS_BODY, i, parkingLots.get(i).getLicensePlate()));
+        }
+        return status.toString();
+    }
 }

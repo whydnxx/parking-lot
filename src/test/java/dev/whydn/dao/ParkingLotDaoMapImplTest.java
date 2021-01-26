@@ -13,8 +13,10 @@ public class ParkingLotDaoMapImplTest {
     public static final int capacity = 2;
 
     public static final String LICENSE_PLATE_ONE = "KA-01-HH-1234";
+    public static final String LICENSE_PLATE_TWO = "KA-01-HH-1234";
 
     public static final Car carOne = new Car(LICENSE_PLATE_ONE);
+    public static final Car carTwo = new Car(LICENSE_PLATE_TWO);
 
     @Test
     public void createParkingLotDaoMap_should_return_ParkingLotDaoClass() {
@@ -80,6 +82,35 @@ public class ParkingLotDaoMapImplTest {
 
         String expectedResult = String.format(MessageConstant.CAR_NOT_FOUND, carOne.getLicensePlate());
         String actualResult = parkingLotDaoMap.remove(carOne, duration);
+
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void status_should_return_statusHeaderMessage_when_no_cars_parking(){
+        Integer capacity = 2;
+        ParkingLotDaoMapImpl parkingLotDaoMapImpl = ParkingLotDaoMapImpl.createParkingLotDaoMap(capacity);
+        parkingLotDaoMapImpl.generateParkingLot();
+
+        String expectedResult = MessageConstant.PRINT_STATUS_HEADER;
+        String actualResult = parkingLotDaoMapImpl.printStatus();
+
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void status_should_return_2_cars_on_statusBodyMessage_when_2_cars_is_parking(){
+        Integer capacity = 2;
+
+        ParkingLotDaoMapImpl parkingLotDaoMapImpl = ParkingLotDaoMapImpl.createParkingLotDaoMap(capacity);
+        parkingLotDaoMapImpl.generateParkingLot();
+        parkingLotDaoMapImpl.park(carOne);
+        parkingLotDaoMapImpl.park(carTwo);
+
+        String expectedResult = MessageConstant.PRINT_STATUS_HEADER +
+                String.format(MessageConstant.PRINT_STATUS_BODY, 1, carOne.getLicensePlate()) +
+                String.format(MessageConstant.PRINT_STATUS_BODY, 2, carTwo.getLicensePlate());
+        String actualResult = parkingLotDaoMapImpl.printStatus();
 
         assertEquals(expectedResult, actualResult);
     }
