@@ -8,11 +8,14 @@ import lombok.Setter;
 import java.util.Objects;
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter @Setter
 public class Car {
     private String licensePlate;
     private CarColor carColor;
+
+    public Car(String licensePlate) {
+        this.licensePlate = licensePlate;
+    }
 
     @Override
     public boolean equals(Object o) {
